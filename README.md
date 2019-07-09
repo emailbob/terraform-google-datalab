@@ -1,5 +1,7 @@
-# terraform-google-datalab
-A Terraform module for creating Google Cloud DataLab instances.
+# Google Cloud DataLab
+This modules makes it easy to create and connect to a DataLab instance without needing the datalab command-line tool.  DataLab instances with GPUs are supported.
+
+Use Cloud Datalab to easily explore, visualize, analyze, and transform data using familiar languages, such as Python and SQL, interactively
 
 
 # Enable APIs
