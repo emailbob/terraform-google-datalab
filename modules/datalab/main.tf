@@ -11,6 +11,9 @@ locals {
   datalab_docker_image = "${var.gpu_count == "0" ? var.datalab_docker_image : var.datalab_gpu_docker_image}"
 }
 
+/***********************************************
+  Template for the startup script
+ ***********************************************/
 data "template_file" "startup_script" {
   template = "${file("${path.module}/templates/startup_script.tpl")}"
 
@@ -21,6 +24,9 @@ data "template_file" "startup_script" {
   }
 }
 
+/***********************************************
+  Partial template that goes into cloud config for default instances
+ ***********************************************/
 data "template_file" "datalab_partial" {
   template = "${file("${path.module}/templates/datalab_partial.tpl")}"
 
@@ -33,6 +39,9 @@ data "template_file" "datalab_partial" {
   }
 }
 
+/***********************************************
+  Partial template that goes into cloud config for GPU instances
+ ***********************************************/
 data "template_file" "datalab_gpu_partial" {
   template = "${file("${path.module}/templates/datalab_gpu_partial.tpl")}"
 
@@ -46,6 +55,9 @@ data "template_file" "datalab_gpu_partial" {
   }
 }
 
+/***********************************************
+  Main cloud config template
+ ***********************************************/
 data "template_file" "cloud_config" {
   template = "${file("${path.module}/templates/cloud_config.tpl")}"
 
@@ -66,6 +78,12 @@ resource "google_compute_instance" "main" {
   zone         = "${var.zone}"
 
   tags = ["datalab"]
+
+  labels {
+    role      = "datalab"
+    use_gpu   = "${var.gpu_count == "0" ? "false" : "true"}"
+    gpu_count = "${var.gpu_count}"
+  }
 
   boot_disk {
     initialize_params {
@@ -123,8 +141,4 @@ resource "google_compute_disk" "main" {
   type  = "pd-ssd"
   size  = "${var.persistant_disk_size_gb}"
   zone  = "${var.zone}"
-
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
 }
