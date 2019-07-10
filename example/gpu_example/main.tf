@@ -20,10 +20,10 @@ provider "google-beta" {
  *****************************************/
 module "datalab" {
   source                    = "../../modules/datalab"
-  gpu_type                  = "nvidia-tesla-k80"
-  gpu_count                 = 2
+  gpu_type                  = "${var.gpu_type}"
+  gpu_count                 = "${var.gpu_count}"
   datalab_gpu_docker_image  = "${var.datalab_gpu_docker_image}"
-  name                      = "${var.name}-gpu"
+  name                      = "${var.name}"
   zone                      = "${var.zone}"
   network_name              = "${module.vpc.subnets_names[0]}"
   machine_type              = "${var.machine_type}"

@@ -11,7 +11,7 @@ variable "project_id" {
 
 variable "name" {
   description = "Instance name"
-  default     = "datalab"
+  default     = "datalab-gpu"
 }
 
 variable "region" {
@@ -37,6 +37,15 @@ variable "boot_disk_size_gb" {
 
 variable "persistant_disk_size_gb" {
   default = "200"
+}
+
+variable "gpu_count" {
+  description = "Valid values are: 0, 1, 2, 4, 8"
+  default     = 2
+}
+
+variable "gpu_type" {
+  default = "nvidia-tesla-k80"
 }
 
 variable "datalab_docker_image" {
