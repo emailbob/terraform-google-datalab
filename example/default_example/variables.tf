@@ -68,8 +68,8 @@ variable "datalab_enable_backup" {
 
 variable "datalab_console_log_level" {
   description = <<EOF
-The log level for which log entries from the Datalab instance will not be
-written to StackDriver logging (trace,debug,info,warn,error,fatal)
+The log level for which log entries from the Datalab instance will be written
+to StackDriver logging. Valid choices: (trace,debug,info,warn,error,fatal)
 EOF
 
   default = "warn"
