@@ -74,6 +74,7 @@ data "template_file" "cloud_config" {
  ***********************************************/
 resource "google_compute_instance" "main" {
   name         = "${var.name}"
+  project      = "${var.project_id}"
   machine_type = "${var.machine_type}"
   zone         = "${var.zone}"
 
@@ -136,9 +137,10 @@ resource "google_compute_instance" "main" {
   Does not create a new disk if an existing_disk_name is set
  *****************************************/
 resource "google_compute_disk" "main" {
-  count = "${var.existing_disk_name == "" ? 1 : 0}"
-  name  = "${var.name}-pd"
-  type  = "pd-ssd"
-  size  = "${var.persistant_disk_size_gb}"
-  zone  = "${var.zone}"
+  name    = "${var.name}-pd"
+  project = "${var.project_id}"
+  count   = "${var.existing_disk_name == "" ? 1 : 0}"
+  type    = "pd-ssd"
+  size    = "${var.persistant_disk_size_gb}"
+  zone    = "${var.zone}"
 }

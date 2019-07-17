@@ -6,13 +6,13 @@
  */
 
 provider "google" {
-  project = "${var.project_id}"
   region  = "${var.region}"
+  version = "~> 2.10.0"
 }
 
 provider "google-beta" {
-  project = "${var.project_id}"
   region  = "${var.region}"
+  version = "~> 2.10.0"
 }
 
 /******************************************
@@ -20,12 +20,13 @@ provider "google-beta" {
  *****************************************/
 module "datalab" {
   source                    = "../../modules/datalab"
+  project_id                = "${var.project_id}"
   gpu_type                  = "${var.gpu_type}"
   gpu_count                 = "${var.gpu_count}"
   datalab_gpu_docker_image  = "${var.datalab_gpu_docker_image}"
   name                      = "${var.name}"
   zone                      = "${var.zone}"
-  network_name              = "${module.vpc.subnets_names[0]}"
+  network_name              = "${module.vpc.subnets_self_links[0]}"
   machine_type              = "${var.machine_type}"
   boot_disk_size_gb         = "${var.boot_disk_size_gb}"
   persistant_disk_size_gb   = "${var.persistant_disk_size_gb}"

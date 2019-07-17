@@ -3,6 +3,10 @@ This modules makes it easy to create and connect to a DataLab instance without n
 
 Use Cloud Datalab to easily explore, visualize, analyze, and transform data using familiar languages, such as Python and SQL, interactively
 
+### Software Dependencies
+### Terraform
+- [Terraform](https://www.terraform.io/downloads.html) 0.11.x
+- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.7.0
 
 # Enable APIs
 In order to operate with the Service Account you must activate the following APIs on the project where the Service Account was created:

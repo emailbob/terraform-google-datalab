@@ -6,13 +6,13 @@
  */
 
 provider "google" {
-  project = "${var.project_id}"
   region  = "${var.region}"
+  version = "~> 2.10.0"
 }
 
 provider "google-beta" {
-  project = "${var.project_id}"
   region  = "${var.region}"
+  version = "~> 2.10.0"
 }
 
 /******************************************
@@ -20,8 +20,9 @@ provider "google-beta" {
  *****************************************/
 module "datalab" {
   source             = "../../modules/datalab"
+  project_id         = "${var.project_id}"
   name               = "${var.name}"
   zone               = "${var.zone}"
-  network_name       = "${module.vpc.subnets_names[0]}"
+  network_name       = "${module.vpc.subnets_self_links[0]}"
   datalab_user_email = "${var.datalab_user_email}"
 }
