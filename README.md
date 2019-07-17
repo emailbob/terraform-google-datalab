@@ -24,9 +24,11 @@ To verify that the drivers are installed correctly and the instance has the corr
 `/var/lib/nvidia/bin/nvidia-smi`
 
 # Access the Cloud DataLab UI
+```
 gcloud beta compute start-iap-tunnel INSTANCE_NAME 8080 \
   --project PROJECT \
   --zone ZONE \
   --local-host-port=localhost:8080
+```
 
 From your browser go to http://localhost:8080
