@@ -73,10 +73,11 @@ data "template_file" "cloud_config" {
   Create GCE instance
  ***********************************************/
 resource "google_compute_instance" "main" {
-  name         = "${var.name}"
-  project      = "${var.project_id}"
-  machine_type = "${var.machine_type}"
-  zone         = "${var.zone}"
+  name                      = "${var.name}"
+  project                   = "${var.project_id}"
+  machine_type              = "${var.machine_type}"
+  zone                      = "${var.zone}"
+  allow_stopping_for_update = "${var.allow_stopping_for_update}"
 
   tags = ["datalab"]
 
@@ -111,6 +112,7 @@ resource "google_compute_instance" "main" {
   metadata_startup_script = "${data.template_file.startup_script.rendered}"
 
   service_account {
+    email  = "${var.service_account}"
     scopes = ["cloud-platform"]
   }
 

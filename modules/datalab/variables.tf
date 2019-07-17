@@ -25,6 +25,11 @@ variable "machine_type" {
   default = "n1-standard-2"
 }
 
+variable "allow_stopping_for_update" {
+  type    = "string"
+  default = "true"
+}
+
 variable "gpu_count" {
   type    = "string"
   default = 0
@@ -33,6 +38,11 @@ variable "gpu_count" {
 variable "gpu_type" {
   type    = "string"
   default = "nvidia-tesla-k80"
+}
+
+variable "service_account" {
+  type    = "string"
+  default = ""
 }
 
 variable "boot_disk_size_gb" {

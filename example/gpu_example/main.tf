@@ -26,6 +26,7 @@ module "datalab" {
   datalab_gpu_docker_image  = "${var.datalab_gpu_docker_image}"
   name                      = "${var.name}"
   zone                      = "${var.zone}"
+  service_account           = "${var.service_account}"
   network_name              = "${module.vpc.subnets_self_links[0]}"
   machine_type              = "${var.machine_type}"
   boot_disk_size_gb         = "${var.boot_disk_size_gb}"

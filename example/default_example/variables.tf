@@ -27,6 +27,10 @@ variable "zone" {
   default = "us-central1-c"
 }
 
+variable "service_account" {
+  default = ""
+}
+
 variable "machine_type" {
   default = "n1-standard-2"
 }
