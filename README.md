@@ -3,9 +3,9 @@ This modules makes it easy to create and connect to a DataLab instance without n
 
 Use Cloud Datalab to easily explore, visualize, analyze, and transform data using familiar languages, such as Python and SQL, interactively
 
-### Software Dependencies
-### Terraform
-- [Terraform](https://www.terraform.io/downloads.html) 0.11.x
+# Software Dependencies
+## Terraform
+- [terraform](https://www.terraform.io/downloads.html) 0.11.x
 - [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v2.7.0
 
 # Enable APIs
@@ -25,6 +25,8 @@ To verify that the drivers are installed correctly and the instance has the corr
 
 # Access the Cloud DataLab UI
 gcloud beta compute start-iap-tunnel INSTANCE_NAME 8080 \
+  --project PROJECT \
+  --zone ZONE \
   --local-host-port=localhost:8080
 
 From your browser go to http://localhost:8080
