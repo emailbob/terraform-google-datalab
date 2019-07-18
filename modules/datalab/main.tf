@@ -139,6 +139,6 @@ resource "google_compute_disk" "main" {
   count = "${var.existing_disk_name == "" ? 1 : 0}"
   name  = "${var.name}-pd"
   type  = "pd-ssd"
-  size  = "${var.persistant_disk_size_gb}"
+  size  = "${var.persistent_disk_size_gb}"
   zone  = "${var.zone}"
 }
