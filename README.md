@@ -13,6 +13,8 @@ In order to operate with the Service Account you must activate the following API
 
 Compute Engine API - compute.googleapis.com
 
+# Service account
+The service account for the datalab instances will need the permission `compute.instances.stop` in order to allow the idle timeout option to shutdown the instance.
 
 # GPU instance
 Not all GPU types are supported in all zones. Go here to check which GPU type and zones are supported https://cloud.google.com/compute/docs/gpus/
