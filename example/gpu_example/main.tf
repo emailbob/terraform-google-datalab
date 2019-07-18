@@ -30,7 +30,7 @@ module "datalab" {
   network_name              = "${module.vpc.subnets_self_links[0]}"
   machine_type              = "${var.machine_type}"
   boot_disk_size_gb         = "${var.boot_disk_size_gb}"
-  persistant_disk_size_gb   = "${var.persistant_disk_size_gb}"
+  persistent_disk_size_gb   = "${var.persistent_disk_size_gb}"
   datalab_enable_swap       = "${var.datalab_enable_swap}"
   datalab_enable_backup     = "${var.datalab_enable_backup}"
   datalab_console_log_level = "${var.datalab_console_log_level}"

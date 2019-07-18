@@ -39,7 +39,7 @@ variable "boot_disk_size_gb" {
   default = "20"
 }
 
-variable "persistant_disk_size_gb" {
+variable "persistent_disk_size_gb" {
   default = "200"
 }
 
